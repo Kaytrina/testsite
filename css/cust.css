@@ -1,0 +1,16 @@
+.table {
+    width: 70%;
+    text-align: center;
+    margin: auto;
+    border: 3px solid darkgreen;
+    border-collapse: separate;
+    border-spacing: 30px 30px;
+}
+
+.table th {
+    width: 30%;
+}
+
+.table tr {
+    border: 1px solid lightgray;
+}

@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Тестовая страница авторизации</title>
+
+    <!-- Библиотеки Bootstrap -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.5/dist/umd/popper.min.js" integrity="sha384-Xe+8cL9oJa6tN/veChSP7q+mnSPaj5Bcu9mPX5F5xIGE0DVittaqT5lorf0EI7Vk" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.min.js" integrity="sha384-ODmDIVzN+pFdexxHEHFBQH3/9/vQ9uori45z4JjnFsRydbmQbmL5t1tQ0culUzyK" crossorigin="anonymous"></script>
+<!--<link rel="stylesheet" href="master.css">-->
+<!--<script type="text/javascript" src="script.js"></script>-->
+
+    <!--Стили-->
+<link rel="stylesheet" href="./css/auth.css" />
+<script src="./js/proverka.js"></script>
+<!--<link rel="stylesheet" href="./user.php" />-->
+
+</head>
+
+<body>
+
+<!--Поиск-->
+<div class="header p-3 mb-2 bg-light text-dark">
+    <img src="./img/logo.png" alt="Caped logo" />
+        Цветочный
+    <div class="input-group">
+        <input class="form-control me-2" type="search" placeholder="Поиск" aria-label="Поиск">
+        <button class="btn btn-outline-success" type="submit">Поиск</button>
+    </div>
+</div>
+
+<!--Вкладки-->
+<ul class="nav nav-tabs" id="myTab" role="tablist">
+    <li class="nav-item" role="presentation">
+        <button class="nav-link active text-secondary" id="home-tab" data-bs-toggle="tab" data-bs-target="#home-tab-pane" type="button" role="tab" aria-controls="home-tab-pane" aria-selected="true">Войти</button>
+    </li>
+    <li class="nav-item" role="presentation">
+        <button class="nav-link text-secondary" id="profile-tab" data-bs-toggle="tab" data-bs-target="#profile-tab-pane" type="button" role="tab" aria-controls="profile-tab-pane" aria-selected="false">Зарегистрироваться</button>
+    </li>
+    <li class="nav-item" role="presentation">
+        <button class="nav-link text-secondary" id="contact-tab" data-bs-toggle="tab" data-bs-target="#contact-tab-pane" type="button" role="tab" aria-controls="contact-tab-pane" aria-selected="false">Забыли пароль</button>
+    </li>
+</ul>
+
+<!--Содержимое вкладок-->
+<div class="tab-content" id="myTabContent">
+
+    <!--Войти-->
+    <div class="tab-pane fade show active" id="home-tab-pane" role="tabpanel" aria-labelledby="home-tab" tabindex="0">
+        <form class="form-horizontal border p-3 needs-validation" novalidate>
+            <center><span class="heading">АВТОРИЗАЦИЯ</span></center>
+            <div class="form-group m-3">
+                <input type="tel" maxlength="11" class="form-control" id="inputTel validationCustom01" placeholder="Телефон" data-bs-toggle="tooltip" pattern="^[0-9]+$" title="вводится без пробелов и символов, 89999999999" required>
+                <i class="fa fa-user"></i>
+                <div class="invalid-feedback">
+                    Пожалуйста заполните это поле
+                </div>
+            </div>
+            <div class="form-group help m-3">
+                <input type="password" class="form-control" id="inputPassword validationCustom02" placeholder="Пароль" maxlength="20" required>
+                <i class="fa fa-lock"></i>
+                <a href="#" class="fa fa-question-circle"></a>
+                <div class="invalid-feedback">
+                    Пожалуйста заполните это поле
+                </div>
+            </div>
+            <div class="form-group m-3">
+                <div class="main-checkbox m-3">
+                    <input class="form-check-input" type="checkbox" value="none" id="checkbox1 invalidCheck" name="check" required/>
+                    <label for="checkbox1"></label>
+                    <span class="text">Запомнить</span>
+                </div>
+                <button type="submit" class="btn btn-outline-success m-3">ВХОД</button>
+            </div>
+        </form>
+    </div>
+
+    <!--Зарегистрироваться-->
+    <div class="tab-pane fade" id="profile-tab-pane" role="tabpanel" aria-labelledby="profile-tab" tabindex="0">
+        <form class="form-horizontal border p-3 needs-validation" action="user.php" method="POST" enctype="multipart/form-data" novalidate>
+            <center><span class="heading">РЕГИСТРАЦИЯ</span></center>
+            <div class="form-group m-3">
+                <input type="text" class="form-control" placeholder="Имя" name="Name" data-bs-toggle="tooltip" pattern="[А-Яа-яЁё]{2,}" maxlength="30" title="вводится русскими буквами, минимум 2" required>
+                <div class="invalid-feedback">
+                    Пожалуйста заполните это поле
+                </div>
+            </div>
+            <div class="form-group m-3">
+                <input type="tel" maxlength="11" class="form-control" id="inputTel" placeholder="Телефон" name="Tel" data-bs-toggle="tooltip" pattern="^[0-9]+$" title="вводится без пробелов и символов, 89999999999" required>
+                <i class="fa fa-user"></i>
+                <div class="invalid-feedback">
+                    Пожалуйста заполните это поле
+                </div>
+            </div>
+            <div class="form-group m-3">
+                <input type="email" id="mail" class="form-control" placeholder="Эл.адрес" name="Mail" data-bs-toggle="tooltip" maxlength="50" required onblur="uniq_username(this.value)">
+                <div class="invalid-feedback">
+                    Пожалуйста заполните это поле
+                </div>
+                <p id="error" class="invalid-feedback">Почта уже занята</p>
+            </div>
+            <div class="form-group m-3">
+                <input type="text" class="form-control" placeholder="Адрес" name="Address" data-bs-toggle="tooltip" maxlength="50" title="вводится русскими буквами, без символов" required>
+                <div class="invalid-feedback">
+                    Пожалуйста заполните это поле
+                </div>
+            </div>
+            <div class="form-group help m-3">
+                <input type="password" class="form-control" id="inputPassword" placeholder="Пароль" name="Password" maxlength="20" required>
+                <i class="fa fa-lock"></i>
+                <a href="#" class="fa fa-question-circle"></a>
+                <div class="invalid-feedback">
+                    Пожалуйста заполните это поле
+                </div>
+            </div>
+            <div class="form-group help m-3">
+                <label class="custom-file-label" for="validatedCustomFile">Выберите фото профиля</label>
+                <input type="file" name="Img" class="custom-file-input" id="validatedCustomFile" required>
+                <div class="invalid-feedback">Пожалуйста выберите изображение</div>
+            </div>
+            <div class="form-group m-3">
+                <div class="main-checkbox m-3">
+                    <input class="form-check-input" type="checkbox" value="none" id="checkbox1" name="check" required/>
+                    <label for="checkbox1"></label>
+                    <span class="text">Я согласен(-на) с политикой конфиденциальности</span>
+                </div>
+                <button type="submit" class="btn btn-outline-success m-3">РЕГИСТРАЦИЯ</button>
+            </div>
+        </form>
+    </div>
+
+    <!--Забыли пароль-->
+    <div class="tab-pane fade" id="contact-tab-pane" role="tabpanel" aria-labelledby="contact-tab" tabindex="0" >
+        <form class="form-horizontal border p-3 needs-validation" novalidate>
+            <center><span class="heading">ВОССТАНОВЛЕНИЕ ПАРОЛЯ</span></center>
+            <div class="form-group m-3">
+                <input type="tel" maxlength="11" class="form-control" id="inputTel" placeholder="Телефон" data-bs-toggle="tooltip" pattern="^[0-9]+$" title="вводится без пробелов и символов, 89999999999" required>
+                <i class="fa fa-user"></i>
+                <div class="invalid-feedback">
+                    Пожалуйста заполните это поле
+                </div>
+                <button type="submit" class="btn btn-outline-success m-3">ВОССТАНОВИТЬ</button>
+            </div>
+        </form>
+    </div>
+
+</div>
+
+
+<!--Валидация для формы-->
+<script>
+    // Пример стартового JavaScript для отключения отправки форм при наличии недопустимых полей
+    (function() {
+        'use strict';
+        window.addEventListener('load', function() {
+            // Получите все формы, к которым мы хотим применить пользовательские стили проверки Bootstrap
+            var forms = document.getElementsByClassName('needs-validation');
+            // Зацикливайтесь на них и предотвращайте подчинение
+            var validation = Array.prototype.filter.call(forms, function(form) {
+                form.addEventListener('submit', function(event) {
+                    if (form.checkValidity() === false) {
+                        event.preventDefault();
+                        event.stopPropagation();
+                    }
+                    form.classList.add('was-validated');
+                }, false);
+            });
+        }, false);
+    })();
+</script>
+
+
+<div class="container-fluid">
+    <form class="row gy-2 gx-3 align-items-center">
+        <div class="form-check m-3">
+            <input class="form-check-input" type="checkbox" id="autoSizingCheck">
+            <label class="form-check-label " for="autoSizingCheck">
+                Оставаться на сайте
+            </label>
+        </div>
+    </form>
+</div>
+
+<footer>
+    <nav class="navbar sticky-bottom bg-light">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">Я внизу</a><a href="test.php">Практ.2</a>
+        </div>
+    </nav>
+</footer>
+
+</body>
+</html>
+
+<!--http://127.0.0.1/openserver/phpmyadmin/index.php-->

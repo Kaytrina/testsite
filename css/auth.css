@@ -1,0 +1,43 @@
+.header {
+    font-family: "Century Gothic";
+    font-size: 150%;
+    letter-spacing: 4px;
+}
+
+.header img {
+    width: 90px;
+    height: 90px;
+}
+
+.input-group {
+    width: 40%;
+}
+
+footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 60px;
+}
+
+body {
+    font-family: "Century Gothic";
+    letter-spacing: 1px;
+}
+
+.tab-pane {
+    width: 60%;
+    margin-bottom: 10px;
+    margin-left: 20%;
+}
+
+.container-fluid{
+    margin-top: 20px;
+}
+
+form .was-validated {
+    color: darkgrey;
+}
+#error{
+    display: none;
+}
